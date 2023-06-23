@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.todo__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 600px;
+    border-bottom: 1px solid darkgrey;
+}
+
+.btn {
+    padding: 0 15px;
+    border-radius: 4px;
+}
+
+.todo__list {
+    width: 600px;
+}
+
+.todo__list-item {
+    border-bottom: 1px solid darkgrey;
+}
