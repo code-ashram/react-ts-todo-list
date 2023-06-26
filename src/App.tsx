@@ -1,32 +1,20 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {useState} from "react";
 
 import './App.css'
 import dataBase from "./data.ts";
 import Form from "./components/Form";
 import List from "./components/List";
+import {ToDo} from "./models";
 
 const App = () => {
+    const [list, setList] = useState<ToDo[]>(dataBase)
 
-    const [list, setList] = useState(dataBase)
-    const [name, setName] = useState('')
-
-    const newListItem = {
-        id: crypto.randomUUID(),
-        name: name
-    }
-
-    const handleAdd = (e: FormEvent): void => {
-        e.preventDefault();
-        if (name.trim()) setList(prevList => [newListItem, ...prevList])
-        setName('')
+    const addTodo = (todo: ToDo) => {
+        setList(prevList => [todo, ...prevList])
     }
 
     const handleDelete = (id: string) => {
-        setList(list.filter((item) => item.id !== id))
-    }
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value)
+        setList(prevList => prevList.filter((item) => item.id !== id))
     }
 
     return (
@@ -35,9 +23,8 @@ const App = () => {
                 React + TS TODO-list
             </h1>
 
-            <Form onSubmit={handleAdd} value={name} onChange={handleChange}/>
+            <Form onSubmit={addTodo}/>
             <List list={list} onDelete={handleDelete}/>
-
         </div>
     )
 }
