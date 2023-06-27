@@ -28,7 +28,7 @@ const Form: FC<Props> = ({onSubmit}) => {
     return (
         <form onSubmit={handleAdd} className="todo__form flex justify-between">
             <input value={name} onChange={handleChange} type="text" className="todo__input text-black w-1/2 rounded"/>
-            <button className="btn form__btn bg-green-500">Add</button>
+            <button className="btn form__btn bg-green-500" type="submit">Add</button>
         </form>
     )
 }
